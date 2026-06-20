@@ -24,8 +24,8 @@ export function ItemCard({ colorTop, colorBottom }: Props) {
                     }}
                 />
             </div>
-            <b className="text-center">Железный меч</b>
-            <div>Самый обычный, ничем ни примечательный меч из стали.</div>
+            <b className="text-center">Стальной меч</b>
+            <div>Самый обычный, ничем ни примечательный меч из железа.</div>
         </div>
     )
 }
