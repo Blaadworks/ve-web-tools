@@ -1,0 +1,13 @@
+html,
+body,
+#root {
+  color: white;
+  background: rgb(16 16 16);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+* {
+  font-family: "Noto Sans", sans-serif;
+}
