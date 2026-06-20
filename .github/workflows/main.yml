@@ -14,12 +14,12 @@ jobs:
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SERVER_IP }}
+          port: ${{ secrets.SERVER_PORT }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /var/www/my-site
+            cd /srv/http/ve-tools.blaadworks.org
             git fetch --tags
             git checkout ${{ github.ref_name }}
             npm install
             npm run build
-            pm2 restart my-site
