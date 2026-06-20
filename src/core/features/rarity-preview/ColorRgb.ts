@@ -1,4 +1,4 @@
-export type Color = {
+export type ColorRgb = {
     r: number;
     g: number;
     b: number;
