@@ -1,18 +1,18 @@
 import { Container } from "inversify";
-import { CameraStore } from "../core/features/skill_graph/camera/CameraStore.ts";
-import { ZoomToolStore } from "../core/features/skill_graph/tools/ZoomToolStore.ts";
-import { ZoomInCommand } from "../commands/ZoomInCommand.ts";
-import { ZoomOutCommand } from "../commands/ZoomOutCommand.ts";
-import { ZoomResetCommand } from "../commands/ZoomResetCommand.ts";
-import { ZoomCommand } from "../commands/ZoomCommand.ts";
-import { ToolRegistry } from "../core/features/skill_graph/tools/ToolRegistry.ts";
-import { ZoomTool } from "../core/features/skill_graph/tools/ZoomTool.ts";
-import { ToolManager } from "../core/features/skill_graph/tools/ToolManager.ts";
-import { NodeTool } from "../core/features/skill_graph/tools/NodeTool.ts";
-import { Graph } from "../core/features/skill_graph/graph/Graph.ts";
-import { PanController } from "../input/PanController.ts";
-import { InputHandler } from "../input/InputHandler.ts";
-import { GraphRenderer } from "../core/features/skill_graph/GraphRenderer.ts";
+import { CameraStore } from "../features/skill_graph/camera/CameraStore.ts";
+import { ZoomToolStore } from "../features/skill_graph/tools/ZoomToolStore.ts";
+import { ZoomInCommand } from "../features/skill_graph/commands/ZoomInCommand.ts";
+import { ZoomOutCommand } from "../features/skill_graph/commands/ZoomOutCommand.ts";
+import { ZoomResetCommand } from "../features/skill_graph/commands/ZoomResetCommand.ts";
+import { ZoomCommand } from "../features/skill_graph/commands/ZoomCommand.ts";
+import { ToolRegistry } from "../features/skill_graph/tools/ToolRegistry.ts";
+import { ZoomTool } from "../features/skill_graph/tools/ZoomTool.ts";
+import { ToolManager } from "../features/skill_graph/tools/ToolManager.ts";
+import { NodeTool } from "../features/skill_graph/tools/NodeTool.ts";
+import { Graph } from "../features/skill_graph/graph/Graph.ts";
+import { PanController } from "../features/skill_graph/input/PanController.ts";
+import { GraphViewInputHandler } from "../features/skill_graph/input/GraphViewInputHandler.ts";
+import { GraphRenderer } from "../features/skill_graph/graph/GraphRenderer.ts";
 
 export const container = new Container();
 
@@ -28,7 +28,7 @@ function registerDependencies() {
     container.bind(ToolManager).toSelf().inSingletonScope();
     container.bind(Graph).toSelf().inSingletonScope();
     container.bind(PanController).toSelf().inSingletonScope();
-    container.bind(InputHandler).toSelf().inSingletonScope();
+    container.bind(GraphViewInputHandler).toSelf().inSingletonScope();
     container.bind(GraphRenderer).toSelf().inSingletonScope();
 
     container.bind(ZoomInCommand).toSelf().inSingletonScope();

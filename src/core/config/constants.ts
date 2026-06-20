@@ -1,1 +1,0 @@
-export const ZOOM_SENSITIVITY: number = 0.01;
