@@ -1,8 +1,8 @@
-import type { Color } from "../Color.ts";
+import type { ColorRgb } from "../color/ColorRgb.ts";
 
 type Props = {
-    colorTop: Color,
-    colorBottom: Color
+    colorTop: ColorRgb,
+    colorBottom: ColorRgb
 }
 
 export function ItemCard({ colorTop, colorBottom }: Props) {
