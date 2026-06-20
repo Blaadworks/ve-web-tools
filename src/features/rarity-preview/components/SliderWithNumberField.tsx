@@ -9,9 +9,9 @@ type Props = {
     maxValue: number;
 };
 
-export function NumberSliderField({ label, value, setValue, minValue, maxValue }: Props) {
+export function SliderWithNumberField({ label, value, setValue, minValue, maxValue }: Props) {
     return (
-        <div className="row align-items-center g-2 mb-3">
+        <div className="row justify-content-center g-2 mb-3">
             <div className="col-2">
                 <label className="form-label mb-0">{label}</label>
             </div>
@@ -25,7 +25,7 @@ export function NumberSliderField({ label, value, setValue, minValue, maxValue }
                 />
             </div>
 
-            <div className="col-2">
+            <div className="col-3 col-sm-2 col-md-3">
                 <BaseNumberField
                     value={value}
                     setValue={setValue}
