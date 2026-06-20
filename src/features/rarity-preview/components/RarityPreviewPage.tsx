@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ItemCard } from "./ItemCard.tsx";
-import { BaseSlider } from "./BaseSlider.tsx";
 import { Gradient } from "../color/Gradient.ts";
+import { NumberSliderField } from "./NumberSliderField.tsx";
 
 export function RarityPreviewPage() {
     const [t, setT] = useState(0);
@@ -23,24 +23,27 @@ export function RarityPreviewPage() {
     return (
         <div className="container-fluid min-vh-100 d-flex flex-column p-4">
             <h1 className="text-center mb-4">Rarity Preview</h1>
-            <div className="d-flex row">
+
+            <div className="row">
                 <div className="col-3">
-                    <BaseSlider
+                    <NumberSliderField
                         label="Float"
-                        value={t}
+                        value={t.toFixed(2)}
                         setValue={setT}
                         minValue={0}
                         maxValue={1}
                     />
-                    <BaseSlider
+
+                    <NumberSliderField
                         label="Delta"
-                        value={tDelta}
+                        value={tDelta.toFixed(2)}
                         setValue={setTDelta}
                         minValue={0}
                         maxValue={0.3}
                     />
                 </div>
-                <div className="d-flex col">
+
+                <div className="col">
                     <ItemCard colorTop={colorTop} colorBottom={colorBottom}/>
                 </div>
             </div>
