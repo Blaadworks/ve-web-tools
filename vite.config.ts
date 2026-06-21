@@ -1,7 +1,23 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
+import macros from 'unplugin-parcel-macros';
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+    plugins: [
+        macros.vite(),
+        react()
+    ],
+    build: {
+        target: ['es2022'],
+        cssMinify: 'lightningcss',
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if(/macro-(.*)\.css$/.test(id) || /@react-spectrum\/s2\/.*\.css$/.test(id)) {
+                        return 's2-styles';
+                    }
+                }
+            }
+        }
+    }
 })

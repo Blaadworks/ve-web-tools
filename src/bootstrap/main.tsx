@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client'
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { bootstrap } from "./compositionRoot.ts";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 bootstrap();
 

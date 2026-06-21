@@ -1,9 +1,9 @@
-import { BaseSlider } from "./BaseSlider.tsx";
-import { BaseNumberField } from "./BaseNumberField.tsx";
+import { NumberField, Slider } from "@react-spectrum/s2";
+import { style } from "@react-spectrum/s2/style" with { type: "macro" };
 
 type Props = {
     label: string;
-    value: number | string;
+    value: number;
     setValue: (newValue: number) => void;
     minValue: number;
     maxValue: number;
@@ -11,28 +11,35 @@ type Props = {
 
 export function SliderWithNumberField({ label, value, setValue, minValue, maxValue }: Props) {
     return (
-        <div className="row justify-content-center g-2 mb-3">
-            <div className="col-2">
-                <label className="form-label mb-0">{label}</label>
-            </div>
-
-            <div className="col">
-                <BaseSlider
-                    value={value}
-                    setValue={setValue}
-                    minValue={minValue}
-                    maxValue={maxValue}
-                />
-            </div>
-
-            <div className="col-3 col-sm-2 col-md-3">
-                <BaseNumberField
-                    value={value}
-                    setValue={setValue}
-                    minValue={minValue}
-                    maxValue={maxValue}
-                />
-            </div>
+        <div className={style({
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "end",
+            gap: 32,
+            width: "100%",
+        })}>
+            <Slider
+                minValue={minValue}
+                maxValue={maxValue}
+                step={0.01}
+                value={value}
+                onChange={setValue}
+                trackStyle="thick"
+                thumbStyle="precise"
+                label={label}
+            />
+            <NumberField
+                minValue={minValue}
+                maxValue={maxValue}
+                step={0.01}
+                value={value}
+                onChange={setValue}
+                styles={style({
+                    maxWidth: 100,
+                    flexShrink: 0,
+                })}
+            />
         </div>
+
     );
 }
