@@ -21,7 +21,7 @@ export function RarityPreviewPage() {
     const colorBottom = gradient.sample(tBottom);
 
     return (
-        <div className="container-fluid min-vh-100 d-flex flex-column p-4">
+        <div className=" container-fluid min-vh-100 d-flex flex-column p-4">
             <h1 className="text-center mb-4">Rarity Preview</h1>
 
             <div className="row">
