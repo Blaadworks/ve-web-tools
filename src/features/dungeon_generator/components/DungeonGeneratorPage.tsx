@@ -3,19 +3,16 @@ import { Button, Heading } from "@react-spectrum/s2";
 import { useRef, useState } from "react";
 import { useCanvasLoop } from "../../base/render/useCanvasLoop.tsx";
 import { DungeonGeneratorRenderer } from "../render/DungeonGeneratorRenderer.ts";
-import type { Grid } from "../render/Grid.ts";
+import { DungeonGrid } from "../render/DungeonGrid.ts";
+import { Room } from "../rooms/Room.ts";
 
 export function DungeonGeneratorPage() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const grid: Grid = {
-        tiles: [
-            { pos: { x: 0, y: 0 }, color: "white" },
-            { pos: { x: 1, y: 0 }, color: "white" },
-            { pos: { x: 2, y: 0 }, color: "white" },
-        ]
-    };
+    const grid = new DungeonGrid();
+    const room = new Room({ x: 0, y: 0 }, { x: 4, y: 6 });
     const [renderer] = useState(new DungeonGeneratorRenderer(grid));
 
+    grid.addRoom(room)
     useCanvasLoop(canvasRef, renderer);
 
     return (
