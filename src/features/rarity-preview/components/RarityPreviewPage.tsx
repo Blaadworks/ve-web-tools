@@ -29,7 +29,8 @@ export function RarityPreviewPage() {
             flexDirection: "column",
             gap: 24,
             minHeight: "100vh",
-            padding: 24
+            padding: 24,
+            boxSizing: "border-box",
         })}>
             <Heading level={1} styles={style({
                 color: "auto",

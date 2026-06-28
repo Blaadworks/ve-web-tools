@@ -9,6 +9,7 @@ export function DungeonGeneratorPage() {
             height: "screen",
             width: "screen",
             padding: 24,
+            boxSizing: "border-box",
         })}>
             <Heading level={1} styles={style({
                 color: "auto",
