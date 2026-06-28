@@ -3,9 +3,10 @@ import { Graph } from "./Graph.ts";
 import { inject, injectable } from "inversify";
 import type { Store } from "../../../adapters/Store.ts";
 import type { Camera } from "../camera/Camera.ts";
+import type { CanvasRenderer } from "../../base/render/CanvasRenderer.ts";
 
 @injectable()
-export class GraphRenderer {
+export class GraphRenderer implements CanvasRenderer {
     private cameraStore: Store<Camera>;
     private graph: Graph;
 

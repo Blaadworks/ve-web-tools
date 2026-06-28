@@ -30,6 +30,7 @@ function registerDependencies() {
     container.bind(PanController).toSelf().inSingletonScope();
     container.bind(GraphViewInputHandler).toSelf().inSingletonScope();
     container.bind(GraphRenderer).toSelf().inSingletonScope();
+    // container.bind(DungeonGeneratorRenderer).toSelf().inSingletonScope();
 
     container.bind(ZoomInCommand).toSelf().inSingletonScope();
     container.bind(ZoomOutCommand).toSelf().inSingletonScope();
