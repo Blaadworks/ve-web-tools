@@ -2,7 +2,7 @@ import type { CanvasRenderer } from "../../base/render/CanvasRenderer.ts";
 import type { DungeonGrid } from "./DungeonGrid.ts";
 import type { RoomTile } from "../rooms/RoomTile.ts";
 
-export class DungeonGeneratorRenderer implements CanvasRenderer {
+export class DungeonGridRenderer implements CanvasRenderer {
     private readonly tileSize = 32;
     private readonly grid: DungeonGrid;
 

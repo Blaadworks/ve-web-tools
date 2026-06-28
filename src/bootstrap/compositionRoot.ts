@@ -13,6 +13,7 @@ import { Graph } from "../features/skill_graph/graph/Graph.ts";
 import { PanController } from "../features/skill_graph/input/PanController.ts";
 import { GraphViewInputHandler } from "../features/skill_graph/input/GraphViewInputHandler.ts";
 import { GraphRenderer } from "../features/skill_graph/graph/GraphRenderer.ts";
+import { DungeonGenerator } from "../features/dungeon_generator/DungeonGenerator.ts";
 
 export const container = new Container();
 
@@ -22,20 +23,22 @@ export function bootstrap() {
 }
 
 function registerDependencies() {
+    // Skill Graph
     container.bind(CameraStore).toSelf().inSingletonScope();
-    container.bind(ZoomToolStore).toSelf().inSingletonScope();
+    container.bind(PanController).toSelf().inSingletonScope();
     container.bind(ToolRegistry).toSelf().inSingletonScope();
     container.bind(ToolManager).toSelf().inSingletonScope();
-    container.bind(Graph).toSelf().inSingletonScope();
-    container.bind(PanController).toSelf().inSingletonScope();
-    container.bind(GraphViewInputHandler).toSelf().inSingletonScope();
-    container.bind(GraphRenderer).toSelf().inSingletonScope();
-    // container.bind(DungeonGeneratorRenderer).toSelf().inSingletonScope();
-
+    container.bind(ZoomToolStore).toSelf().inSingletonScope();
+    container.bind(ZoomCommand).toSelf().inSingletonScope();
     container.bind(ZoomInCommand).toSelf().inSingletonScope();
     container.bind(ZoomOutCommand).toSelf().inSingletonScope();
     container.bind(ZoomResetCommand).toSelf().inSingletonScope();
-    container.bind(ZoomCommand).toSelf().inSingletonScope();
+    container.bind(GraphViewInputHandler).toSelf().inSingletonScope();
+    container.bind(Graph).toSelf().inSingletonScope();
+    container.bind(GraphRenderer).toSelf().inSingletonScope();
+
+    // Dungeon Generator
+    container.bind(DungeonGenerator).toSelf().inSingletonScope();
 }
 
 function initialize() {

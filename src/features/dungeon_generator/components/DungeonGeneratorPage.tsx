@@ -2,17 +2,16 @@ import { style } from "@react-spectrum/s2/style" with { type: "macro" };
 import { Button, Heading } from "@react-spectrum/s2";
 import { useRef, useState } from "react";
 import { useCanvasLoop } from "../../base/render/useCanvasLoop.tsx";
-import { DungeonGeneratorRenderer } from "../render/DungeonGeneratorRenderer.ts";
-import { DungeonGrid } from "../render/DungeonGrid.ts";
-import { Room } from "../rooms/Room.ts";
+import { DungeonGridRenderer } from "../render/DungeonGridRenderer.ts";
+import { container } from "../../../bootstrap/compositionRoot.ts";
+import { DungeonGenerator } from "../DungeonGenerator.ts";
 
 export function DungeonGeneratorPage() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const grid = new DungeonGrid();
-    const room = new Room({ x: 0, y: 0 }, { x: 4, y: 6 });
-    const [renderer] = useState(new DungeonGeneratorRenderer(grid));
+    const dungeonGenerator = container.get(DungeonGenerator);
+    const dungeon = dungeonGenerator.generate();
+    const [renderer] = useState(new DungeonGridRenderer(dungeon));
 
-    grid.addRoom(room)
     useCanvasLoop(canvasRef, renderer);
 
     return (
