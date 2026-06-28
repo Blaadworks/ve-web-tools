@@ -13,6 +13,9 @@ export function HomePage() {
                 <button onClick={() => navigate("/rarity_preview")}>
                     Rarity Preview
                 </button>
+                <button onClick={() => navigate("/dungeon_generator")}>
+                    Dungeon Generator
+                </button>
             </div>
         </div>
     )
