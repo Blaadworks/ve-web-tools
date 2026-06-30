@@ -6,6 +6,10 @@ export class DungeonGrid {
     private readonly tiles: Map<string, RoomTile> = new Map<string, RoomTile>();
     private readonly rooms: Map<string, Room> = new Map<string, Room>();
 
+    getRooms(): Room[] {
+        return Array.from(this.rooms.values());
+    }
+
     getTileMap(): RoomTile[] {
         return Array.from(this.tiles.values())
     }

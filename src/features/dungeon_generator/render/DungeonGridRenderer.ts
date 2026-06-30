@@ -3,7 +3,7 @@ import type { DungeonGrid } from "./DungeonGrid.ts";
 import type { RoomTile } from "../rooms/RoomTile.ts";
 
 export class DungeonGridRenderer implements CanvasRenderer {
-    private readonly tileSize = 32;
+    private readonly tileSize = 16;
     private readonly grid: DungeonGrid;
 
     constructor(grid: DungeonGrid) {

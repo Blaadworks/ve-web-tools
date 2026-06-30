@@ -3,12 +3,22 @@ import { Button, Heading } from "@react-spectrum/s2";
 import { useRef, useState } from "react";
 import { useCanvasLoop } from "../../base/render/useCanvasLoop.tsx";
 import { DungeonGridRenderer } from "../render/DungeonGridRenderer.ts";
-import { container } from "../../../bootstrap/compositionRoot.ts";
-import { DungeonGenerator } from "../DungeonGenerator.ts";
+import { DungeonGenerator } from "../generator/DungeonGenerator.ts";
+import { DungeonGeneratorConfig } from "../generator/DungeonGeneratorConfig.ts";
+import { RandomGenerator } from "../../../math/RandomGenerator.ts";
 
 export function DungeonGeneratorPage() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const dungeonGenerator = container.get(DungeonGenerator);
+    const seed = 42;
+    const rng = new RandomGenerator(seed);
+    const config = new DungeonGeneratorConfig();
+    config.roomCount = 10;
+    config.minRoomSize = 3;
+    config.maxRoomSize = 6;
+    config.minRoomDistance = 2;
+    config.maxRoomDistance = 5;
+
+    const dungeonGenerator = new DungeonGenerator(config, rng);
     const dungeon = dungeonGenerator.generate();
     const [renderer] = useState(new DungeonGridRenderer(dungeon));
 

@@ -13,7 +13,6 @@ import { Graph } from "../features/skill_graph/graph/Graph.ts";
 import { PanController } from "../features/skill_graph/input/PanController.ts";
 import { GraphViewInputHandler } from "../features/skill_graph/input/GraphViewInputHandler.ts";
 import { GraphRenderer } from "../features/skill_graph/graph/GraphRenderer.ts";
-import { DungeonGenerator } from "../features/dungeon_generator/DungeonGenerator.ts";
 
 export const container = new Container();
 
@@ -36,9 +35,6 @@ function registerDependencies() {
     container.bind(GraphViewInputHandler).toSelf().inSingletonScope();
     container.bind(Graph).toSelf().inSingletonScope();
     container.bind(GraphRenderer).toSelf().inSingletonScope();
-
-    // Dungeon Generator
-    container.bind(DungeonGenerator).toSelf().inSingletonScope();
 }
 
 function initialize() {
