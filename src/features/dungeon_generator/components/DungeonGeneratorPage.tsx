@@ -9,9 +9,10 @@ import { RandomGenerator } from "../../../math/RandomGenerator.ts";
 
 export function DungeonGeneratorPage() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const seed = 42;
+    const seed = 4;
     const rng = new RandomGenerator(seed);
     const config = new DungeonGeneratorConfig();
+    config.dungeonSize = 50;
     config.roomCount = 10;
     config.minRoomSize = 3;
     config.maxRoomSize = 6;

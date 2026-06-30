@@ -4,5 +4,6 @@ export class DungeonGeneratorConfig {
     minRoomDistance: number = 0;
     maxRoomDistance: number = 0;
     roomCount: number = 0;
+    dungeonSize: number = 0;
     backroomRatio: number = 0;
 }

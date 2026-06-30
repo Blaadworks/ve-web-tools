@@ -14,19 +14,21 @@ export class DungeonGenerator {
 
     generate(): DungeonGrid {
         const dungeon = new DungeonGrid();
-        const room = new Room({ x: 0, y: 0 }, { x: 4, y: 6 });
 
         this.addRooms(dungeon);
-        dungeon.addRoom(room)
 
         return dungeon;
     }
 
     private addRooms(dungeon: DungeonGrid) {
-        const room1 = new Room({ x: 0, y: 0 }, { x: 4, y: 6 });
-        const room2 = new Room({ x: 0, y: 8 }, { x: 4, y: 6 });
+        for(let i = 0; i < this.config.roomCount; i++) {
+            const posX = this.rng.nextIntInRange(0, this.config.dungeonSize);
+            const posY = this.rng.nextIntInRange(0, this.config.dungeonSize);
+            const width = this.rng.nextIntInRange(this.config.minRoomSize, this.config.maxRoomSize);
+            const height = this.rng.nextIntInRange(this.config.minRoomSize, this.config.maxRoomSize);
+            const room = new Room({ x: posX, y: posY }, { x: width, y: height });
 
-        dungeon.addRoom(room1);
-        dungeon.addRoom(room2);
+            dungeon.addRoom(room);
+        }
     }
 }
