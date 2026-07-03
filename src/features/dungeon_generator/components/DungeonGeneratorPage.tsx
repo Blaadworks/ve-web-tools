@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useCanvasLoop } from "../../base/render/useCanvasLoop.tsx";
 import { DungeonRenderer } from "../dungeon/DungeonRenderer.ts";
 import { container } from "../../../bootstrap/compositionRoot.ts";
-import { GenerateDungeonCommand } from "../dungeon/GenerateDungeonCommand.ts";
+import { GenerateDungeonCommand } from "../commands/GenerateDungeonCommand.ts";
 
 export function DungeonGeneratorPage() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);

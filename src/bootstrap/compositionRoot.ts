@@ -19,7 +19,7 @@ import { DungeonStore } from "../features/dungeon_generator/dungeon/DungeonStore
 import { DungeonGeneratorConfig } from "../features/dungeon_generator/dungeon/DungeonGeneratorConfig.ts";
 import { DungeonGenerator } from "../features/dungeon_generator/dungeon/DungeonGenerator.ts";
 import { RandomGenerator } from "../math/RandomGenerator.ts";
-import { GenerateDungeonCommand } from "../features/dungeon_generator/dungeon/GenerateDungeonCommand.ts";
+import { GenerateDungeonCommand } from "../features/dungeon_generator/commands/GenerateDungeonCommand.ts";
 
 export const container = new Container();
 

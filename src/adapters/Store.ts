@@ -34,11 +34,13 @@ export class Store<T> {
         this.emit();
     }
 
-    subscribe(listener: Listener<T>) {
+    subscribe(listener: Listener<T>): () => boolean {
+        const unsubscriptionToken = () => this.listeners.delete(listener);
+
         this.listeners.add(listener);
         listener(this.state);
 
-        return () => this.listeners.delete(listener);
+        return unsubscriptionToken;
     }
 
     private emit() {
