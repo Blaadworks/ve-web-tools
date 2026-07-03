@@ -1,3 +1,6 @@
+import { injectable } from "inversify";
+
+@injectable()
 export class RandomGenerator {
     private number: number;
 

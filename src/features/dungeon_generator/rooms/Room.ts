@@ -8,4 +8,20 @@ export class Room {
         this.pos = pos;
         this.size = size;
     }
+
+    getMinX(): number {
+        return this.pos.x;
+    }
+
+    getMaxX(): number {
+        return this.pos.x + this.size.x;
+    }
+
+    getMinY(): number {
+        return this.pos.y - this.size.y;
+    }
+
+    getMaxY(): number {
+        return this.pos.y
+    }
 }

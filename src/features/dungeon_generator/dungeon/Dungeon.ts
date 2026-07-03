@@ -2,7 +2,7 @@ import type { Vec2 } from "../../../math/Vec2.ts";
 import { RoomTile } from "../rooms/RoomTile.ts";
 import type { Room } from "../rooms/Room.ts";
 
-export class DungeonGrid {
+export class Dungeon {
     private readonly tiles: Map<string, RoomTile> = new Map<string, RoomTile>();
     private readonly rooms: Map<string, Room> = new Map<string, Room>();
 

@@ -1,13 +1,15 @@
 import type { CanvasRenderer } from "../../base/render/CanvasRenderer.ts";
-import type { DungeonGrid } from "./DungeonGrid.ts";
-import type { RoomTile } from "../rooms/RoomTile.ts";
+import { DungeonViewModel } from "./DungeonViewModel.ts";
+import { inject, injectable } from "inversify";
+import { TileViewModel } from "./TileViewModel.ts";
 
-export class DungeonGridRenderer implements CanvasRenderer {
+@injectable()
+export class DungeonRenderer implements CanvasRenderer {
     private readonly tileSize = 16;
-    private readonly grid: DungeonGrid;
+    private readonly viewModel: DungeonViewModel;
 
-    constructor(grid: DungeonGrid) {
-        this.grid = grid;
+    constructor(@inject(DungeonViewModel) dungeonViewModel: DungeonViewModel) {
+        this.viewModel = dungeonViewModel;
     }
 
     render(ctx: CanvasRenderingContext2D) {
@@ -20,17 +22,17 @@ export class DungeonGridRenderer implements CanvasRenderer {
         ctx.save();
         ctx.translate(width / 2, height / 2);
 
-        for(const tile of this.grid.getTileMap()) {
+        for(const tile of this.viewModel.tiles) {
             this.renderTile(ctx, tile);
         }
 
         ctx.restore();
     }
 
-    private renderTile(ctx: CanvasRenderingContext2D, tile: RoomTile) {
+    private renderTile(ctx: CanvasRenderingContext2D, tileViewModel: TileViewModel) {
         const size = this.tileSize;
-        const centerX = tile.pos.x * size;
-        const centerY = tile.pos.y * size;
+        const centerX = tileViewModel.pos.x * size;
+        const centerY = tileViewModel.pos.y * size;
         const left = centerX - size / 2;
         const top = centerY - size / 2;
 
