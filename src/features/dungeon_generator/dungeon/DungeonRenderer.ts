@@ -26,20 +26,28 @@ export class DungeonRenderer implements CanvasRenderer {
             this.renderTile(ctx, tile);
         }
 
+        ctx.strokeStyle = "red";
+
+        for(const [pos1, pos2] of this.viewModel.connectedRoomPositions) {
+            ctx.beginPath();
+            ctx.moveTo(pos1.x * this.tileSize, pos1.y * this.tileSize);
+            ctx.lineTo(pos2.x * this.tileSize, pos2.y * this.tileSize);
+            ctx.stroke();
+        }
+
         ctx.restore();
     }
 
     private renderTile(ctx: CanvasRenderingContext2D, tileViewModel: TileViewModel) {
-        const size = this.tileSize;
-        const centerX = tileViewModel.pos.x * size;
-        const centerY = tileViewModel.pos.y * size;
-        const left = centerX - size / 2;
-        const top = centerY - size / 2;
+        const centerX = tileViewModel.position.x * this.tileSize;
+        const centerY = tileViewModel.position.y * this.tileSize;
+        const left = centerX - this.tileSize / 2;
+        const top = centerY - this.tileSize / 2;
 
         ctx.fillStyle = "white";
-        ctx.fillRect(left, top, size, size);
+        ctx.fillRect(left, top, this.tileSize, this.tileSize);
 
         ctx.strokeStyle = "#404040";
-        ctx.strokeRect(left, top, size, size);
+        ctx.strokeRect(left, top, this.tileSize, this.tileSize);
     }
 }

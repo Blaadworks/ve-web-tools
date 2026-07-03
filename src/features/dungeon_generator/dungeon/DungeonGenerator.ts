@@ -3,6 +3,7 @@ import { Room } from "../rooms/Room.ts";
 import { DungeonGeneratorConfig } from "./DungeonGeneratorConfig.ts";
 import { RandomGenerator } from "../../../math/RandomGenerator.ts";
 import { inject } from "inversify";
+import Delaunator from 'delaunator';
 
 export class DungeonGenerator {
     config: DungeonGeneratorConfig;
@@ -20,6 +21,7 @@ export class DungeonGenerator {
         const dungeon = new Dungeon();
 
         this.addRooms(dungeon);
+        this.triangulateRooms(dungeon);
 
         return dungeon;
     }
@@ -71,5 +73,32 @@ export class DungeonGenerator {
         const colliderVertically = room1.getMinY() <= room2.getMaxY() && room1.getMaxY() >= room2.getMinY();
 
         return collideHorizontally && colliderVertically;
+    }
+
+    private triangulateRooms(dungeon: Dungeon) {
+        const coords: Array<number> = [];
+        const rooms = dungeon.getRooms();
+
+        for(const room of rooms) {
+            const roomCenter = room.getCenterPos();
+            coords.push(roomCenter.x);
+            coords.push(roomCenter.y);
+        }
+
+        const delaunay = new Delaunator(coords);
+
+        for(let i = 0; i < delaunay.triangles.length; i += 3) {
+            const roomA = rooms[delaunay.triangles[i]];
+            const roomB = rooms[delaunay.triangles[i + 1]];
+            const roomC = rooms[delaunay.triangles[i + 2]];
+
+            if(roomA == null || roomB == null || roomC == null) {
+                throw new Error("Invalid Delaunay triangulation mesh!");
+            }
+
+            roomA.connectRoom(roomB);
+            roomB.connectRoom(roomC);
+            roomC.connectRoom(roomA);
+        }
     }
 }

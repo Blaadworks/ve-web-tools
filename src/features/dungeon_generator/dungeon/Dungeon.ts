@@ -10,6 +10,11 @@ export class Dungeon {
         return Array.from(this.rooms.values());
     }
 
+    getRoom(pos: Vec2): Room | undefined {
+        const key = this.convertPosKey(pos);
+        return this.rooms.get(key);
+    }
+
     getTileMap(): RoomTile[] {
         return Array.from(this.tiles.values())
     }
