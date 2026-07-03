@@ -27,7 +27,7 @@ export class Room {
     }
 
     getCenterPos(): Vec2 {
-        return { x: this.pos.x + this.size.x / 2, y: this.pos.y + this.size.y / 2 };
+        return { x: this.pos.x + this.size.x / 2, y: this.pos.y - this.size.y / 2 };
     }
 
     connectRoom(room: Room) {
