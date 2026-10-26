@@ -33,6 +33,5 @@ jobs:
       - name: Upload
         run: >
           rsync -rltzO --delete
-          --exclude .git --exclude node_modules
           -e "ssh -p ${{ secrets.SSH_PORT || 22 }}"
-          ./ github@${{ secrets.SSH_HOST }}:/srv/http/ve-tools.blaadworks.org/
+          ./dist/ github@${{ secrets.SSH_HOST }}:/srv/http/ve.blaadworks.org/tools/

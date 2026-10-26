@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import macros from 'unplugin-parcel-macros';
 
 export default defineConfig({
+    base: '/tools/',
     plugins: [
         macros.vite(),
         react()
